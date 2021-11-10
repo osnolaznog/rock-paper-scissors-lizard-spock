@@ -1,0 +1,342 @@
+@charset "UTF-8";
+/*
+    1. Position: fixed, relative, absolute
+    2. Box Model: margin, padding, width
+    3. Fonts: fuentes, tamaños, colores
+    4. Visuals: shadow box, border radius
+    5. Others
+*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
+}
+
+/*
+  Reset button styles
+  It takes a little bit of work to achieve a “blank slate” look.
+*/
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  /*
+    Show a hand cursor on hover instead of the default arrow cursor
+    (Some argue that we should keep the default arrow cursor for buttons, to be consistent with how desktop operating systems treat buttons.)
+  */
+  cursor: pointer;
+}
+
+main {
+  width: 100%;
+  min-height: 100vh;
+  background: url(../assets/bg_game.jpg);
+  background-size: cover;
+  background-position: center center;
+  display: grid;
+  position: relative;
+}
+main section {
+  width: 90%;
+  margin: auto;
+  padding: 50px;
+  background-color: white;
+  border-radius: 32px;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: space-between;
+}
+main section h1 {
+  font-size: 5.5rem;
+  color: #e14759;
+  text-transform: uppercase;
+  text-align: center;
+}
+main section h1 span:before {
+  content: "Rock";
+  -webkit-animation: animate infinite 5s;
+          animation: animate infinite 5s;
+}
+@-webkit-keyframes animate {
+  0% {
+    content: "Rock";
+  }
+  20% {
+    content: "Scissors";
+  }
+  40% {
+    content: "Paper";
+  }
+  60% {
+    content: "Lizard";
+  }
+  80% {
+    content: "Spock";
+  }
+}
+@keyframes animate {
+  0% {
+    content: "Rock";
+  }
+  20% {
+    content: "Scissors";
+  }
+  40% {
+    content: "Paper";
+  }
+  60% {
+    content: "Lizard";
+  }
+  80% {
+    content: "Spock";
+  }
+}
+main section .scoreboard-container {
+  width: 100%;
+  margin: 20px auto;
+}
+@media (min-width: 768px) {
+  main section .scoreboard-container {
+    width: 70%;
+    max-width: 80%;
+  }
+}
+main section .scoreboard-container .scoreboard-title {
+  height: 50px;
+  background: linear-gradient(60deg, #081d27, #1d2d47);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px 16px 0 0;
+}
+main section .scoreboard-container .scoreboard-title h2 {
+  font-size: 3rem;
+  line-height: 3.6rem;
+  letter-spacing: 5px;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+}
+main section .scoreboard-container .button-container {
+  display: flex;
+  margin: 20px auto;
+  justify-content: center;
+}
+main section .scoreboard-container .button-container button {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+  background: #e14759;
+  color: white;
+  width: 100px;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 #00000070;
+}
+@media (min-width: 768px) {
+  main section .scoreboard-container .button-container button {
+    font-size: 1.6rem;
+  }
+}
+main section .scoreboard-container .button-container button:hover {
+  transform: scale(1.1);
+}
+main section .scoreboard-results {
+  width: 100%;
+  display: inline-flex;
+}
+main section .scoreboard-results .badge {
+  width: 50%;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+}
+main section .scoreboard-results .badge span {
+  font-size: 4.5rem;
+}
+main section .scoreboard-results .badge p {
+  font-size: 1.8rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+main section .scoreboard-results .scoreboard-user {
+  background-color: #53b7c7;
+  border-radius: 0 0 0 16px;
+}
+main section .scoreboard-results .scoreboard-cpu {
+  background-color: #cd7a2e;
+  border-radius: 0 0 16px 0;
+}
+main .result-popup, main .instructions-popup {
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: #081d27d3;
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+}
+main .result-popup .result-popup-container, main .result-popup .instructions-popup-container, main .instructions-popup .result-popup-container, main .instructions-popup .instructions-popup-container {
+  width: 80%;
+  height: auto;
+  max-height: 80vh;
+  background-color: #fff;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 0;
+  position: relative;
+}
+@media (min-width: 768px) {
+  main .result-popup .result-popup-container, main .result-popup .instructions-popup-container, main .instructions-popup .result-popup-container, main .instructions-popup .instructions-popup-container {
+    width: 50%;
+  }
+}
+main .result-popup .result-popup-container .close-icon, main .result-popup .instructions-popup-container .close-icon, main .instructions-popup .result-popup-container .close-icon, main .instructions-popup .instructions-popup-container .close-icon {
+  position: absolute;
+  width: 20px;
+  right: 20px;
+  top: 20px;
+  right: 20px;
+}
+main .result-popup .result-popup-container .close-icon:hover, main .result-popup .instructions-popup-container .close-icon:hover, main .instructions-popup .result-popup-container .close-icon:hover, main .instructions-popup .instructions-popup-container .close-icon:hover {
+  cursor: pointer;
+}
+main .result-popup .result-popup-container .result-image, main .result-popup .instructions-popup-container .result-image, main .instructions-popup .result-popup-container .result-image, main .instructions-popup .instructions-popup-container .result-image {
+  width: 250px;
+  height: auto;
+  margin-bottom: 20px;
+}
+main .result-popup .result-popup-container h2.result-display, main .result-popup .instructions-popup-container h2.result-display, main .instructions-popup .result-popup-container h2.result-display, main .instructions-popup .instructions-popup-container h2.result-display {
+  color: #53b7c7;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.6rem;
+}
+main .result-popup .result-popup-container .result-choices, main .result-popup .instructions-popup-container .result-choices, main .instructions-popup .result-popup-container .result-choices, main .instructions-popup .instructions-popup-container .result-choices {
+  display: flex;
+  width: 60%;
+  margin: 20px auto;
+  justify-content: space-between;
+  align-items: flex-end;
+  text-align: center;
+}
+main .result-popup .result-popup-container .result-choices img, main .result-popup .instructions-popup-container .result-choices img, main .instructions-popup .result-popup-container .result-choices img, main .instructions-popup .instructions-popup-container .result-choices img {
+  width: 80px;
+  height: auto;
+  margin-bottom: 10px;
+}
+main .result-popup .result-popup-container .result-choices h3, main .result-popup .result-popup-container .result-choices h4, main .result-popup .instructions-popup-container .result-choices h3, main .result-popup .instructions-popup-container .result-choices h4, main .instructions-popup .result-popup-container .result-choices h3, main .instructions-popup .result-popup-container .result-choices h4, main .instructions-popup .instructions-popup-container .result-choices h3, main .instructions-popup .instructions-popup-container .result-choices h4 {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+main .result-popup .result-popup-container .result-choices h3, main .result-popup .instructions-popup-container .result-choices h3, main .instructions-popup .result-popup-container .result-choices h3, main .instructions-popup .instructions-popup-container .result-choices h3 {
+  font-size: 3.2rem;
+  align-self: center;
+}
+main .result-popup .result-popup-container .result-choices h4, main .result-popup .instructions-popup-container .result-choices h4, main .instructions-popup .result-popup-container .result-choices h4, main .instructions-popup .instructions-popup-container .result-choices h4 {
+  font-size: 1.5rem;
+}
+main .result-popup .result-popup-container .result-choices .player, main .result-popup .instructions-popup-container .result-choices .player, main .instructions-popup .result-popup-container .result-choices .player, main .instructions-popup .instructions-popup-container .result-choices .player {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: lightgray;
+}
+main .result-popup .result-popup-container .result-choices-user img, main .result-popup .instructions-popup-container .result-choices-user img, main .instructions-popup .result-popup-container .result-choices-user img, main .instructions-popup .instructions-popup-container .result-choices-user img {
+  filter: hue-rotate(145deg);
+}
+main .result-popup .result-popup-container .result-choices-cpu img, main .result-popup .instructions-popup-container .result-choices-cpu img, main .instructions-popup .result-popup-container .result-choices-cpu img, main .instructions-popup .instructions-popup-container .result-choices-cpu img {
+  filter: hue-rotate(290deg);
+  transform: scaleX(-1);
+}
+main .user-choice--container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  main .user-choice--container {
+    width: 100%;
+  }
+}
+main .user-choice--container h3 {
+  font-size: 2rem;
+  color: #757575;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+main .user-choice--container .user-choice-buttons {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+main .user-choice--container .user-choice-buttons > .button {
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  font-size: 1.8rem;
+  text-align: center;
+  width: 150px;
+  margin: 10px auto;
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  main .user-choice--container .user-choice-buttons > .button {
+    width: 200px;
+  }
+}
+main .user-choice--container .user-choice-buttons > .button:hover > * {
+  filter: hue-rotate(145deg) drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.1));
+  transform: scale(1.15);
+}
+main .user-choice--container .user-choice-buttons > .button img {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 10px;
+  filter: grayscale(1);
+}
+@media (min-width: 768px) {
+  main .user-choice--container .user-choice-buttons > .button img {
+    width: 150px;
+    height: 150px;
+  }
+}
+main .help {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e14759;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  cursor: pointer;
+}/*# sourceMappingURL=styles.css.map */

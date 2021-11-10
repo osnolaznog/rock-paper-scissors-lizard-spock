@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <title>Rock, paper, scissors, lizard, spock</title>
+  </head>
+  <body> 
+    <main> 
+      <section>
+        <h1> <span></span></h1>
+        <div class="scoreboard-container">
+          <div class="scoreboard-title"> 
+            <h2>Scoreboard</h2>
+          </div>
+          <div class="scoreboard-results">
+            <div class="scoreboard-user badge" id="user-badge"><span id="user-score">0</span>
+              <p>User </p>
+            </div>
+            <div class="scoreboard-cpu badge" id="cpu-badge"> <span id="cpu-score">0</span>
+              <p>CPU</p>
+            </div>
+          </div>
+          <div class="button-container">
+            <button id="restart-game">Restart</button>
+          </div>
+        </div>
+        <div class="result-popup">
+          <div class="result-popup-container"><img class="close-icon" src="./assets/close.svg" alt="close"><img class="result-image" src="./assets/*.svg" alt="win">
+            <h2 class="result-display"></h2>
+            <div class="result-choices">
+              <div class="result-choices-user"><img class="user-choice-image" src="./assets/rock.svg" alt="user-choice">
+                <h4 class="user-choice"></h4>
+                <h4 class="player">USER</h4>
+              </div>
+              <h3 class="results-action">VS</h3>
+              <div class="result-choices-cpu"><img class="cpu-choice-image" src="./assets/scissors.svg" alt="cpu-choice">
+                <h4 class="cpu-choice"> </h4>
+                <h4 class="player">CPU</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="user-choice--container">
+          <h3>Make your choice!</h3>
+          <div class="user-choice-buttons"> 
+            <div class="button" id="rock"><img src="./assets/rock.svg">
+              <p>rock</p>
+            </div>
+            <div class="button" id="scissors"><img src="./assets/scissors.svg">
+              <p>scissors</p>
+            </div>
+            <div class="button" id="paper"><img src="./assets/paper.svg">
+              <p>paper</p>
+            </div>
+            <div class="button" id="lizard"><img src="./assets/lizard.svg">
+              <p>lizard</p>
+            </div>
+            <div class="button" id="spock"><img src="./assets/rock.svg">
+              <p>spock</p>
+            </div>
+          </div>
+        </div>
+        <div class="help"> <span>?</span></div>
+        <div class="instructions-popup">
+          <div class="instructions-popup-container"><img src="https://content.instructables.com/ORIG/FIU/AIWE/I7Q0TCUT/FIUAIWEI7Q0TCUT.jpg?auto=webp&amp;frame=1&amp;fit=bounds&amp;md=5b8102e911f24990417073b8517e53d2"><img class="close-icon close-instructions" src="./assets/close.svg" alt="close"></div>
+        </div>
+      </section>
+    </main>
+    <script src="./index.js"> </script>
+  </body>
+</html>

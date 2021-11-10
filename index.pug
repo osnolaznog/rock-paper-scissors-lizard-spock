@@ -1,0 +1,71 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="./styles/styles.css")
+        title Rock, paper, scissors, lizard, spock
+    body 
+        main 
+            section
+                h1 
+                    span
+                .scoreboard-container
+                    .scoreboard-title 
+                        h2 Scoreboard
+
+                    .scoreboard-results
+                        .scoreboard-user.badge#user-badge
+                            span#user-score 0
+                            p User 
+                        .scoreboard-cpu.badge#cpu-badge 
+                            span#cpu-score 0
+                            p CPU
+                    .button-container
+                        button#restart-game Restart
+
+                .result-popup
+                    .result-popup-container
+                        img(src="./assets/close.svg", alt="close").close-icon
+                        img(src="./assets/*.svg", alt="win").result-image
+                        h2.result-display
+                        .result-choices
+                            .result-choices-user
+                                img(src="./assets/rock.svg", alt="user-choice").user-choice-image
+                                h4.user-choice
+                                h4.player USER
+                            h3.results-action VS
+                            .result-choices-cpu
+                                img(src="./assets/scissors.svg", alt="cpu-choice").cpu-choice-image
+                                h4.cpu-choice 
+                                h4.player CPU
+
+                .user-choice--container
+                    h3 Make your choice!
+                    .user-choice-buttons 
+                        .button#rock
+                            img(src="./assets/rock.svg")
+                            p rock
+                        .button#scissors
+                            img(src="./assets/scissors.svg")
+                            p scissors
+                        .button#paper
+                            img(src="./assets/paper.svg")
+                            p paper
+                        .button#lizard
+                            img(src="./assets/lizard.svg")
+                            p lizard
+                        .button#spock
+                            img(src="./assets/rock.svg")
+                            p spock
+                .help 
+                    span ?
+
+
+                .instructions-popup
+                    .instructions-popup-container
+                        img(src="https://content.instructables.com/ORIG/FIU/AIWE/I7Q0TCUT/FIUAIWEI7Q0TCUT.jpg?auto=webp&frame=1&fit=bounds&md=5b8102e911f24990417073b8517e53d2")
+                        img(src="./assets/close.svg", alt="close").close-icon.close-instructions
+        script(src="./index.js") 
+                        
